@@ -95,6 +95,11 @@ return [
             ],
         ],
 
+        // start mailtrap transport
+        'mailtrap' => [
+            'transport' => 'mailtrap'
+        ],
+
     ],
 
     /*
