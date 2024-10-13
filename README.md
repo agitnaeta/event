@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# How to install 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Pre Request 
+- Php Version ^8.2
+- Node Version 18 
+- compoer v.2
 
-## About Laravel
+### Make database 
+- Recomended using `mysql` or `pgsql`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### How to install
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. clone repo `https://github.com/agitnaeta/event`
+2. copy `.env.example` and make `.env`
+3. makesure you fill the correct env 
+ - DB_CONNECTION=musql
+ - DB_HOST=YOUR_DB_HOST
+ - DB_PORT=YOUR_DB_PORT `usually 3306`
+ - DB_DATABASE=YOUR_DB_NAME 
+ - DB_USERNAME=YOUR_DB_USERNAME
+ - DB_PASSWORD=YOUR_PASSWORD
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+4. install composer `composer install`
+5. install react `npm install`
+6. compile assets & js `npm run build`
+8. Run database migration `php artisan migrate` is there's some issue with error code `[2002]` usually that we need to check the connection on step number 3.
+9. Run on local `php artisan serve`
+10. *Aditional: if you want to modify style during server you can run `npm run dev`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Advance Setup (EMAIL)
+Email Notification on this system using background process.
+so it non block process.
+please follow the setup
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Update `.env` change  makesure this key is follow 
+- QUEUE_CONNECTION=database
 
-## Laravel Sponsors
+2. check `MAIL_MAILER`, you can use `smtp` or you can use third party.
+in my case im using MailTrap 
+So you can create account on mailtrap and get this all credential 
+- MAILTRAP_HOST="sandbox.api.mailtrap.io"
+- MAILTRAP_API_KEY="YOUR_KEY"
+- MAILTRAP_INBOX_ID=INBOX_ID
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+if you are using SMTP you can check this key on `.env`
+- MAIL_HOST=127.0.0.1
+- MAIL_PORT=2525 
+- MAIL_USERNAME=null 
+- MAIL_PASSWORD=null 
+- MAIL_ENCRYPTION=null 
+- MAIL_FROM_ADDRESS="hello@example.com"
+- MAIL_FROM_NAME="${APP_NAME}"
 
-### Premium Partners
+3. After All setup you can run `php artisan queue:work`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+## Demo app on vercel 
+https://event-one-khaki.vercel.app/
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
