@@ -9,3 +9,11 @@ Route::any("/notification", [NotificationController::class,"index"])->name('noti
 
 Route::resource('events',EventController::class)->except("index");
 Route::resource('notification', NotificationController::class)->except('index');
+
+
+// Since on vercel there's no background process.
+// we can set route that call queue
+Route::get('/process-queue', function () {
+    Artisan::call('queue:work --stop-when-empty');
+    return response('Queue processed');
+});
