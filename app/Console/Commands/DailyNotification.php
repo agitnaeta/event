@@ -34,8 +34,7 @@ class DailyNotification extends Command
         $eventsStartingTomorrow->map(function($event){
             $notifications = Notification::where("event_id",$event->id)->get();
             $notifications->map(function ($notification) use ($event) {
-                $this->info("Sending Email To $notification->email");
-//                SendingEmail::dispatch($event,$notification);
+                SendingEmail::dispatch($event,$notification);
             });
         });
     }
