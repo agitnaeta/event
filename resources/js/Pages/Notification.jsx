@@ -17,6 +17,9 @@ export default function Notification({notifications}) {
         })
     }
 
+    if(!notifications){
+       return ( <h1 className={'text-4xl mb-4'}>Notification List</h1> )
+    }
     return (
         <div className="overflow-x-auto">
             <h1 className={'text-4xl mb-4'}>Notification List</h1>
