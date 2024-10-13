@@ -56,6 +56,10 @@ if you are using SMTP you can check this key on `.env`
 3. After All setup you can run `php artisan queue:work`
 
 
+## Schedule Run (cron)
+1.You can check command schedule by `php artisan schedule:list`
+2. To make it run on background you can run `php artisan schedule:work`
+
 ## Demo app on vercel 
 https://event-one-khaki.vercel.app/
 
