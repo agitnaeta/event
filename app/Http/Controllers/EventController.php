@@ -76,7 +76,7 @@ class EventController extends Controller
             $this->notificationService->createFromEvent($request,$event);
         });
 
-        return redirect("/");
+        return to_route('event.index');
     }
 
     /**
@@ -85,6 +85,6 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect("/");
+        return to_route('event.index');
     }
 }

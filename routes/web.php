@@ -4,14 +4,10 @@ use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 
-Route::get("/",[EventController::class,"index"]);
+Route::any("/",[EventController::class,"index"])->name('event.index');
 
-Route::get("/notification", function (){
+Route::any("/notification", function (){
     return inertia("Notification");
-});
+})->name('notification.index');
 Route::resource('events',EventController::class)->except("index");
 Route::resource('notification', NotificationController::class);
-
-Route::get("/run",function (){
-    \Illuminate\Support\Facades\Artisan::call("queue:work");
-});

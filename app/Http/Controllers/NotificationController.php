@@ -56,7 +56,7 @@ class NotificationController extends Controller
     public function update(UpdateNotificationRequest $request, Notification $notification)
     {
         SendingEmail::dispatch($notification->event,$notification);
-        return redirect('/notification');
+        return to_route("/");
     }
 
     /**
