@@ -59,3 +59,5 @@ if you are using SMTP you can check this key on `.env`
 ## Demo app on vercel 
 https://event-one-khaki.vercel.app/
 
+## Demo on hosting 
+http://103.129.148.159/
