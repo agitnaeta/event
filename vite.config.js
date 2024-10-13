@@ -14,7 +14,7 @@ export default defineConfig({
             targets: [
                 {
                     src: 'resources/js/service-worker.js',
-                    dest: './'
+                    dest: '.././'
                 },
             ],
         }),
