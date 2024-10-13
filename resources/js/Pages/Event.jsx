@@ -56,12 +56,19 @@ export default  function Event({events}){
     )
 }
 
-function renderEventContent(event){
+function renderEventContent({event}){
     return (
         <>
-            <div id={event.event.id} className={"bg-blue-500 p-2 rounded text-center text-white"}>
-                {event.event.title}
+            <div
+                id={event.id}
+                className={`p-2 rounded text-left text-white ${
+                    event.extendedProps.status === 'completed' ? 'bg-red-500' : 'bg-blue-500'
+                }`}
+            >
+                <p> {event.title}</p>
+                <p className={'text-xs'}>{event.extendedProps.status}</p>
             </div>
+
         </>
     )
 }

@@ -14,16 +14,17 @@ class Event extends Model
 
     public mixed $notifications;
     protected $fillable = [
-      'title',
-      'description',
-      'start_date',
-      'end_date',
-      'location',
+        'title',
+        'description',
+        'start_date',
+        'end_date',
+        'location',
     ];
 
-    protected $appends =[
+    protected $appends = [
         'start',
         'end',
+        'status',
     ];
 
     // Accessor for the 'start' attribute
@@ -42,8 +43,31 @@ class Event extends Model
         );
     }
 
+    // Accessor to determine the event status
+    protected function status(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Carbon::now()->isBefore(Carbon::parse($this->attributes['end_date']))
+                ? 'incoming' : 'completed',
+        );
+    }
+
+    // Scope to filter only completed events
+    public function scopeCompleted($query)
+    {
+        return $query->where('end_date', '<', Carbon::now());
+    }
+
+    // Scope to filter events that will start within 1 day
+    public function scopeStartingInOneDay($query)
+    {
+        $now = Carbon::now();
+        $tomorrow = $now->copy()->addDay();
+        return $query->whereDate('start_date', '=', $tomorrow->toDateString());
+    }
+
     public function notifications(): HasMany
     {
-        return $this->hasMany(Notification::class,'event_id','id');
+        return $this->hasMany(Notification::class, 'event_id', 'id');
     }
 }
