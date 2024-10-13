@@ -16,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
             HandleInertiaRequests::class,
         ]);
     })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->validateCsrfTokens(except: [
+            '*',
+        ]);
+    })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

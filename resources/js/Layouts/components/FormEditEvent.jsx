@@ -1,7 +1,6 @@
 import {useForm} from "@inertiajs/react";
 import {useState, useEffect} from 'react';
 import Creatable from 'react-select/creatable';
-import {dateconvert} from "../../Helper/dateconvert.jsx";
 export default function FormEditEvent({ showModal, setShowModal, selectedEvent, toast }) {
     const {
         data,
@@ -66,7 +65,7 @@ export default function FormEditEvent({ showModal, setShowModal, selectedEvent, 
     // submit form.
     const handleSubmit = (e) =>{
         e.preventDefault()
-        put(`/events/${data.id}`,{
+        put(window.location.origin+`/events/${data.id}`,{
             preserveScroll: true,
             onSuccess : () => {
                 setShowModal(false);
@@ -76,7 +75,8 @@ export default function FormEditEvent({ showModal, setShowModal, selectedEvent, 
     }
 
     const handleDelete = (e) =>{
-        destroy(`/events/${e.target.id}`,{
+        console.log(window.location.origin+`/events/${data.id}`);
+        destroy(window.location.origin+`/events/${e.target.id}`,{
             preserveScroll: true,
             onSuccess : () => {
                 setShowModal(false);

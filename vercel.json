@@ -5,10 +5,17 @@
             "runtime": "vercel-php@0.7.2"
         }
     },
+    "outputDirectory": "public",
     "routes": [
         {
+            "src": "/build/(.*)",
+            "dest": "/build/$1",
+            "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+        },
+        {
             "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/api/index.php",
+            "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
         }
     ]
 }
