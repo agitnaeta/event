@@ -27,7 +27,7 @@ class EventFactory extends Factory
 
         return [
             'title' => $this->faker->sentence(5),               // Generates a random title
-            'description' => $this->faker->sentence(200),           // Generates a random paragraph for description
+            'description' => $this->faker->sentence(100),           // Generates a random paragraph for description
             'start_date' => $startDate,                         // Random start date
             'end_date' => $endDate,                             // End date after start date
             'location' => $this->faker->city,                   // Generates a random city as location
