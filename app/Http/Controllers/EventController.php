@@ -32,8 +32,10 @@ class EventController extends Controller
     public function benchmark()
     {
        Benchmark::dd(
-           ['schenario_1'=>fn()=> Event::all()],
-           ['schenario_2'=>fn()=> Event::with(['notifications'])->get()]
+           [
+               'schenario_1'=>fn()=> Event::all(),
+               'schenario_2'=>fn()=> Event::with(['notifications'])->get()
+           ],
        );
     }
 
