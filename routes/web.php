@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 
 Route::any("/",[EventController::class,"index"])->name('event.index');
+Route::any("/benchmark",[EventController::class,"benchmark"])->name('event.benchmark');
 Route::any("/notification", [NotificationController::class,"index"])->name('notification.index');
 
 Route::resource('events',EventController::class)->except("index");

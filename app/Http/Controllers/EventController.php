@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
 use App\Services\NotificationService;
+use Illuminate\Support\Benchmark;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
@@ -25,6 +26,12 @@ class EventController extends Controller
     {
         $events = Event::with(['notifications'])->get();
         return inertia("Event",['events'=>$events ?: null]);
+    }
+
+
+    public function benchmark()
+    {
+       Benchmark::dd(fn()=> Event::with(['notifications'])->get());
     }
 
     /**
